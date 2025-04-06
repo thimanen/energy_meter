@@ -24,8 +24,9 @@ architecture-beta
 ```
 
 ## work hour log
-|date|time|activity|
-|:----:|:----:|:----:|
-|6.4.|3|Star the project, create Github repo, draw an architecture diagram, write project plan|
+|date|time|activity|Next|
+|:----:|:----:|:----:|:----:|
+|5.4.|1|Shelly pro 3EM received: need to order electrician to install. RaspberryPI not received yet|Start SW project|
+|6.4.|3|Start the project: create Github repo, draw an architecture diagram, write project description|Study Shelly API, plan data schemas|
 
 
