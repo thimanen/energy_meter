@@ -30,6 +30,7 @@ architecture-beta
 |:----:|:----:|:----:|:----:|
 |5.4.|1|Shelly pro 3EM received: need to order electrician to install. RaspberryPI not received yet|Start SW project|
 |6.4.|3|Start the project: create Github repo, draw an architecture diagram, write project description|Study Shelly API, plan data schemas|
-|21.4.|1|RaspberryPI has not arrived yet, nor has the electrician installed the Shellys. Time spent for planning the connection of the Shellys into the house main switchboard (installation will be done by an electrician)|Study Shelly API, plan data schemas|
+|20.4.|1|RaspberryPI has not arrived yet, nor has the electrician installed the Shellys. Time spent for planning the connection of the Shellys into the house main switchboard (installation will be done by an electrician)|Study Shelly API, plan data schemas|
+|21.4.|2|Study MongoDB Time Series Collection. It is introduced in version 5.0 for storing time series data, what my data is natively - a lot of data with a timestamp all with same/similar metadata|Study Shelly API, plan data schemas|
 
 
