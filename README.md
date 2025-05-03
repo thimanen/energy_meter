@@ -21,6 +21,7 @@ architecture-beta
     junctionShelly:B --> T:raspberry
     database:L <--> R:raspberry
     raspberry:B --> T:application
+    application:R <-- B:database
 
 
 ```
