@@ -4,7 +4,7 @@ The project will implement a mobile application to visualise energy consumption 
 
 The goal of the project is to implement a node.js/express server on RaspberryPI to read regularly power and energy data from two Shelly pro 3EM energy meters. The other Shelly pro 3EM (Shelly mains) is connected to the 3-phase mains and the other Shelly pro 3EM (Shelly solar) is connected to the 3-phase solar power station. The server will store the energy data read from the two Shellys in a free hosted MongoDB database. The server will provide a REST API for reading current, daily, weekly, monthly and yearly power and energy data. The current data is reported as power (W, watts) and the daily, weekly, monthly and yearly energy are reported as energy (Wh, watt hours).
 
-Instantaneous/current data is read by the server from the Shellys and reported through the REST API interface. Daily/weekyl/monthly/yearly data are read from the MongoDB server and reported through the REST API interface
+Instantaneous/current data is read by the server from the Shellys and reported through the REST API interface. Daily/weekyl/monthly/yearly data are read from the MongoDB server and reported through the REST API interface. Since the energy meter system will operate inside a local network which is not exposed externally (no public IP address), the mobile application will use the free hosted MongoDB database directly to fetch historical data. Presentation of current data is onlu possible within local network.
 
 ```mermaid
 architecture-beta
