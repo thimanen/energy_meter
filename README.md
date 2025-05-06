@@ -34,5 +34,6 @@ architecture-beta
 |20.4.|1|RaspberryPI has not arrived yet, nor has the electrician installed the Shellys. Time spent for planning the connection of the Shellys into the house main switchboard (installation will be done by an electrician)|Study Shelly API, plan data schemas|
 |21.4.|2|Study MongoDB Time Series Collection. It is introduced in version 5.0 for storing time series data, what my data is natively - a lot of data with a timestamp all with same/similar metadata|Study Shelly API, plan data schemas|
 |29.4.|1|Both Shellys and automatic circuit breakers received from Amazon.de. The estimated delivery for RaspberryPI is 7.5. Time was spent studying the needed electric componenta to the main electroc circuit/switchboard. Electrocian ordered.|Start with SW finally...|
+|6.5.|3|Finally received RaspberryPI from Amazon.de. Setting-up, installing necessary SW and cloning the Github repo|The day after tomorrow, an electirician will install the Shellys and the coding project can finally start| 
 
 
