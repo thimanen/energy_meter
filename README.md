@@ -26,6 +26,8 @@ architecture-beta
 
 ```
 
+![title](images/IMG-20250404-WA0004.jpg)
+
 ## work hour log
 |date|time|activity|Next|
 |:----:|:----:|:----:|:----:|
