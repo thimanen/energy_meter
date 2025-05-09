@@ -15,10 +15,14 @@ logger.info('Server started')
 const fetchData = async (startTimestamp, endTimestamp) => {
   try {
     const url = `${config.SHELLY_MAINS_URI}&ts=${startTimestamp}`
-    logger.info(`time now: ${Date.now() / 1000} and startTimestamp: ${startTimestamp}`)
+    logger.info(
+      `time now: ${Date.now() / 1000} and startTimestamp: ${startTimestamp}`,
+    )
     const response = await axios.get(url)
-    
+
+    logger.info('ts:', response.data.data[0].ts)
     logger.info('Mittaridata:', response.data.data[0].values[0])
+    
   } catch (error) {
     logger.error('Virhe pyynnössä:', error)
   }
