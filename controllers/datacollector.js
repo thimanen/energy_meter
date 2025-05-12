@@ -4,7 +4,9 @@ const config = require('../utils/config')
 const Reading = require('../models/reading')
 
 const dailyData = []
+
 const getDailyData = () => dailyData
+
 const clearDailyData = () => {
   dailyData.length = 0
 }
