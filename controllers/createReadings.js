@@ -16,7 +16,11 @@ const scheduleDailyUpload = () => {
 
     try {
       await Reading.insertMany(energyData)
-      logger.info(`Uploaded ${energyData.length} readings to MongoDB`)
+      const now = new Date()
+      const localDateTime = now.toLocaleString()
+      logger.info(
+        `Uploaded ${energyData.length} readings to MongoDB at ${localDateTime}`,
+      )
       clearDailyData()
     } catch (error) {
       logger.error('Upload failed:', error.message)

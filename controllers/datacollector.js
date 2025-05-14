@@ -34,9 +34,11 @@ const aggregateData = (reading) => {
 
 const fetchData = async (source, shellyUrl, startTimestamp) => {
   try {
+    /*
     logger.info(
       `time now: ${Date.now() / 1000} and startTimestamp: ${startTimestamp}`,
     )
+    */
 
     const url = `${shellyUrl}&ts=${startTimestamp}`
     const response = await axios.get(url)
@@ -53,10 +55,12 @@ const fetchData = async (source, shellyUrl, startTimestamp) => {
 
     dailyData.push(reading)
 
+    /*
     logger.info(
       `meter data from ${source} at ${ts}: total energy: ${total_act_energy}, maximum power: ${max_act_power}, total returned energy: ${total_act_ret_energy}`,
     )
     logger.info(dailyData)
+    */
   } catch (error) {
     logger.error('error in request:', error)
   }
