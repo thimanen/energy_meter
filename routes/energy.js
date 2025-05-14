@@ -10,6 +10,10 @@ energyRouter.get('/', async (request, response) => {
 energyRouter.get('/date/:date', async (request, response) => {
   const dateStr = request.params.date
   console.log(dateStr)
+  
+
+  // create start and end timestamps
+  response.status(200).end()
 })
 
 module.exports = energyRouter

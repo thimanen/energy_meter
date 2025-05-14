@@ -3,6 +3,7 @@ const logger = require('./utils/logger')
 const express = require('express')
 const middleware = require('./utils/middleware')
 const energyRouter = require('./routes/energy')
+const { shutdown } = require('./helpers/db')
 
 const { startDataCollector } = require('./controllers/datacollector')
 const { connectToMongoDB, ensureTimeSeriesCollection } = require('./helpers/db')
@@ -31,5 +32,9 @@ scheduleDailyUpload()
 
 app.use('/energy', energyRouter)
 app.use(middleware.unknownEndpoint)
+
+// handle abrupt termination such as ctrl-C in terminal
+process.on('SIGINT', shutdown)
+process.on('SIGTERM', shutdown)
 
 module.exports = app
