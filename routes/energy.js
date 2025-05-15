@@ -13,7 +13,7 @@ energyRouter.get('/date/:date', async (request, response) => {
   const { startUtc, endUtc } = getUtcRangeForLocalDate(dateStr)
   console.log(startUtc, endUtc)
 
-  const energyReadings = readRange(startUtc, endUtc)
+  const energyReadings = await readRange(startUtc, endUtc)
   console.log(energyReadings)
   response.json(energyReadings).end()
 })
