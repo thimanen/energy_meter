@@ -61,6 +61,7 @@ const fetchData = async (source, shellyUrl, startTimestamp) => {
     )
     logger.info(dailyData)
     */
+    
   } catch (error) {
     logger.error('error in request:', error)
   }
