@@ -1,4 +1,4 @@
-const { logger } = require('../utils/logger')
+const { DateTime } = require('luxon')
 
 const getTimeUntilNextMinute = () => {
   const now = new Date()
@@ -6,6 +6,8 @@ const getTimeUntilNextMinute = () => {
 }
 
 const getUtcRangeForLocalDate = (localDateStr) => {
+  // calculate UtC range without luxon package
+  /*
   const localDate = new Date(localDateStr)
 
   const startLocal = new Date(localDate)
@@ -15,6 +17,16 @@ const getUtcRangeForLocalDate = (localDateStr) => {
 
   const startUtc = new Date(startLocal)
   const endUtc = new Date(endLocal)
+  */
+
+  // use Luxon packgae to better deal with daylight savings etc.
+  const startLocal = DateTime.fromISO(localDateStr, {
+    zone: 'Europe/Helsinki',
+  }).startOf('day')
+  const endLocal = startLocal.endOf('day')
+
+  const startUtc = startLocal.toUTC().toJSDate()
+  const endUtc = endLocal.toUTC().toJSDate()
 
   return { startUtc, endUtc }
 }
