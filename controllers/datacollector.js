@@ -2,6 +2,7 @@ const axios = require('axios')
 const logger = require('../utils/logger')
 const config = require('../utils/config')
 const Reading = require('../models/reading')
+const { getTimeUntilNextMinute } = require('../helpers/dateUtils')
 
 const dailyData = []
 
@@ -61,15 +62,9 @@ const fetchData = async (source, shellyUrl, startTimestamp) => {
     )
     logger.info(dailyData)
     */
-    
   } catch (error) {
     logger.error('error in request:', error)
   }
-}
-
-const getTimeUntilNextMinute = () => {
-  const now = new Date()
-  return 60000 - (now.getSeconds() * 1000 + now.getMilliseconds())
 }
 
 const syncFirstRead = (source, shellyUrl) => {

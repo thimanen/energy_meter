@@ -21,11 +21,10 @@ energyRouter.get('/date/:date', async (request, response) => {
   }
 })
 
+// GET /energy/hourly/:date
 energyRouter.get('/hourly/:date', async (request, response) => {
   const dateStr = request.params.date
   const { startUtc, endUtc } = getUtcRangeForLocalDate(dateStr)
-  console.log('startUtc:' , startUtc)
-  console.log('endUtc: ', endUtc)
 
   try {
     const energyReadings = await readAggregateByHour(startUtc, endUtc)

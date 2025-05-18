@@ -2,9 +2,6 @@ const logger = require('../utils/logger')
 const Reading = require('../models/reading')
 
 const readAggregateByHour = async (startTs, endTs) => {
-  const start = new Date(startTs)
-  const end = new Date(endTs)
-
   try {
     const results = await Reading.aggregate([
       {

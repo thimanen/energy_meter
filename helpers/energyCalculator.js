@@ -27,8 +27,4 @@ const computeEnergyFlows = (mains, solar) => {
   }
 }
 
-const createTimestampsForDate = (dateStr) => {
-    
-}
-
 module.exports = { computeEnergyFlows }

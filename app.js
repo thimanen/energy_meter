@@ -19,7 +19,7 @@ connectToMongoDB()
 ensureTimeSeriesCollection()
 
 const now = new Date()
-logger.info(`time now is: ${now.toLocaleString()}`)
+logger.info(`Local time: ${now.toLocaleString()}`)
 
 // Start collection of energy data
 startDataCollector('solar', config.SHELLY_SOLAR_URI)
