@@ -71,9 +71,18 @@ const shutdown = async () => {
   }
 }
 
+const getLastMongoTs = async (source) => {
+  const lastReading = await Reading.findOne({ source: source }).sort({
+    timestamp: -1,
+  })
+  const lastTs = new Date(lastReading.timestamp)
+  return lastTs
+}
+
 module.exports = {
   connectToMongoDB,
   closeMongoDB,
   ensureTimeSeriesCollection,
   shutdown,
+  getLastMongoTs,
 }

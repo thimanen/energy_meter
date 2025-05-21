@@ -69,7 +69,7 @@ const fetchData = async (source, shellyUrl, startTimestamp) => {
 
 const syncFirstRead = (source, shellyUrl) => {
   const delay = getTimeUntilNextMinute()
-  logger.info(`source ${source}: first read after ${delay / 1000} seconds`)
+  logger.info(`[${source}] First read after ${delay / 1000} seconds`)
 
   setTimeout(() => {
     const startTimestamp = Math.floor(Date.now() / 1000) - 120
