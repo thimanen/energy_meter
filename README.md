@@ -32,7 +32,7 @@ Cover of the fuse cabinet after succesfull installation.
 
 ## work hour log
 |date|time|total|activity|Next|
-|:----:|:----:|:----:|:----:|
+|:----:|:----:|:----:|:----:|:----:|
 |5.4.|1|1|Shelly pro 3EM received: need to order electrician to install. RaspberryPI not received yet|Start SW project|
 |6.4.|3|4|Start the project: create Github repo, draw an architecture diagram, write project description|Study Shelly API, plan data schemas|
 |20.4.|1|5|RaspberryPI has not arrived yet, nor has the electrician installed the Shellys. Time spent for planning the connection of the Shellys into the house main switchboard (installation will be done by an electrician)|Study Shelly API, plan data schemas|
