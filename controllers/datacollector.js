@@ -4,12 +4,16 @@ const config = require('../utils/config')
 const Reading = require('../models/reading')
 const { getTimeUntilNextMinute } = require('../helpers/dateUtils')
 
-const dailyData = []
+let dailyData = []
 
 const getDailyData = () => dailyData
 
 const clearDailyData = () => {
   dailyData.length = 0
+}
+
+const clearDailyDataForSource = (source) => {
+  dailyData = dailyData.filter((s) => s.source !== source)
 }
 
 const aggregateData = (reading) => {
@@ -88,4 +92,10 @@ const startDataCollector = (source, shellyUrl) => {
   syncFirstRead(source, shellyUrl)
 }
 
-module.exports = { startDataCollector, getDailyData, clearDailyData }
+module.exports = {
+  startDataCollector,
+  aggregateData,
+  getDailyData,
+  clearDailyData,
+  clearDailyDataForSource,
+}
