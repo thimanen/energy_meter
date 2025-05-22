@@ -31,14 +31,14 @@ Cover of the fuse cabinet after succesfull installation.
 ![title](images/IMG_20250509_203634.jpg)
 
 ## work hour log
-|date|time|activity|Next|
+|date|time|total|activity|Next|
 |:----:|:----:|:----:|:----:|
-|5.4.|1|Shelly pro 3EM received: need to order electrician to install. RaspberryPI not received yet|Start SW project|
-|6.4.|3|Start the project: create Github repo, draw an architecture diagram, write project description|Study Shelly API, plan data schemas|
-|20.4.|1|RaspberryPI has not arrived yet, nor has the electrician installed the Shellys. Time spent for planning the connection of the Shellys into the house main switchboard (installation will be done by an electrician)|Study Shelly API, plan data schemas|
-|21.4.|2|Study MongoDB Time Series Collection. It is introduced in version 5.0 for storing time series data, what my data is natively - a lot of data with a timestamp all with same/similar metadata|Study Shelly API, plan data schemas|
-|29.4.|1|Both Shellys and automatic circuit breakers received from Amazon.de. The estimated delivery for RaspberryPI is 7.5. Time was spent studying the needed electric componenta to the main electroc circuit/switchboard. Electrocian ordered.|Start with SW finally...|
-|6.5.|3|Finally received RaspberryPI from Amazon.de. Setting-up, installing necessary SW and cloning the Github repo|The day after tomorrow, an electirician will install the Shellys and the coding project can finally start|
+|5.4.|1|1|Shelly pro 3EM received: need to order electrician to install. RaspberryPI not received yet|Start SW project|
+|6.4.|3|4|Start the project: create Github repo, draw an architecture diagram, write project description|Study Shelly API, plan data schemas|
+|20.4.|1|5|RaspberryPI has not arrived yet, nor has the electrician installed the Shellys. Time spent for planning the connection of the Shellys into the house main switchboard (installation will be done by an electrician)|Study Shelly API, plan data schemas|
+|21.4.|2|7|Study MongoDB Time Series Collection. It is introduced in version 5.0 for storing time series data, what my data is natively - a lot of data with a timestamp all with same/similar metadata|Study Shelly API, plan data schemas|
+|29.4.|1|8|Both Shellys and automatic circuit breakers received from Amazon.de. The estimated delivery for RaspberryPI is 7.5. Time was spent studying the needed electric componenta to the main electroc circuit/switchboard. Electrocian ordered.|Start with SW finally...|
+|6.5.|3|11|Finally received RaspberryPI from Amazon.de. Setting-up, installing necessary SW and cloning the Github repo|The day after tomorrow, an electirician will install the Shellys and the coding project can finally start|
 |8.5.|3|Two Shellys installed and connected to local WiFi network. Shellys detect and measure the current by using a transformer wrapped around the wire i.e. by magnetic induction. I had two out of six transformers installed in wrong direction... Struggled a bit with starting coding... where to start... what to do first, but then I decided to start from scratch and see if I can get data in 60s intervals read from the Shellys. Had to learn all about UNIX timestamps.|Next task is to build structure for the SW project and start implementation. First task is to get energy data read from both meters (Shellys) in 60s intervals, stored those locally and the save them to Atlas MongoDB by the end of the day.|
 |9-11.5.|12|A lot of updates: actual and returned energies calculated correctly. Shelly's do not report negative energy, but returned energy as positive. Took a while to figure out... Server application structure adjustment and code refactoring. Now data is collected once per minute and stored locally as mongoose Schema objects. MongoDB time-series collection creation in the beginning of the application (in case it has not been created already)|Next task is to store once per day the time-series data into Atlas MongoDB|
 |12.5.|4|More implementation: helper functions to calculate total consumptio and net energy flow from solar generated energy, mains bought and sold energies. Created function to write data to mongoDB.|Implement simple functions to read energy readings from mongoDB|
