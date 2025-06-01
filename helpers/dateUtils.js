@@ -5,20 +5,7 @@ const getTimeUntilNextMinute = () => {
   return 60000 - (now.getSeconds() * 1000 + now.getMilliseconds())
 }
 
-const getUtcRangeForLocalDate = (localDateStr) => {
-  // calculate UtC range without luxon package
-  /*
-  const localDate = new Date(localDateStr)
-
-  const startLocal = new Date(localDate)
-  startLocal.setHours(0, 0, 0, 0)
-  const endLocal = new Date(localDate)
-  endLocal.setHours(23, 59, 59, 999)
-
-  const startUtc = new Date(startLocal)
-  const endUtc = new Date(endLocal)
-  */
-
+const getUtcDayRangeForLocalDate = (localDateStr) => {
   // use Luxon packgae to better deal with daylight savings etc.
   const startLocal = DateTime.fromISO(localDateStr, {
     zone: 'Europe/Helsinki',
@@ -31,4 +18,19 @@ const getUtcRangeForLocalDate = (localDateStr) => {
   return { startUtc, endUtc }
 }
 
-module.exports = { getTimeUntilNextMinute, getUtcRangeForLocalDate }
+const getUtcWeekRangeForLocalDate = (localDateStr) => {
+  const zone = 'Europe/Helsinki'
+  const startLocal = DateTime.fromISO(localDateStr, {zone}).startOf('day')
+  const endLocal = startLocal.plus({ days: 7 }).startOf('day')
+
+  const startUtc = startLocal.toUTC().toJSDate()
+  const endUtc = endLocal.toUTC().toJSDate()
+
+  return { startUtc, endUtc }
+}
+
+module.exports = {
+  getTimeUntilNextMinute,
+  getUtcDayRangeForLocalDate,
+  getUtcWeekRangeForLocalDate,
+}
