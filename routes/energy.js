@@ -39,8 +39,8 @@ energyRouter.get('/hourly/:date', async (request, response) => {
     response.status(500).json({ error: 'Aggregation failed' })
   }
 })
-// GET /energy/weekly/:date
-energyRouter.get('/weekly/:date', async (request, response) => {
+// GET /energy/daily/:date
+energyRouter.get('/daily/:date', async (request, response) => {
   const dateStr = request.params.date
   const { startUtc, endUtc } = getUtcWeekRangeForLocalDate(dateStr)
 
