@@ -6,7 +6,9 @@ const { getTimeUntilNextMinute } = require('../helpers/dateUtils')
 
 let dailyData = []
 
-const getDailyData = () => dailyData
+const getDailyData = () => {
+  return dailyData
+}
 
 const clearDailyData = () => {
   dailyData.length = 0
