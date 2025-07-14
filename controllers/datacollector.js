@@ -39,37 +39,36 @@ const aggregateData = (reading) => {
   return { total_act_energy, total_act_ret_energy, max_act_power, ts }
 }
 
-const fetchData = async (source, shellyUrl, startTimestamp) => {
-  try {
-    /*
-    logger.info(
-      `time now: ${Date.now() / 1000} and startTimestamp: ${startTimestamp}`,
-    )
-    */
+const fetchData = async (source, shellyUrl, startTimestamp, retries = 3) => {
+  const url = `${shellyUrl}&ts=${startTimestamp}`
 
-    const url = `${shellyUrl}&ts=${startTimestamp}`
-    const response = await axios.get(url)
-    const { total_act_energy, total_act_ret_energy, max_act_power, ts } =
-      aggregateData(response.data)
+  /* re-try (retries-1) times in case error in fetching the data */
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const response = await axios.get(url)
+      const { total_act_energy, total_act_ret_energy, max_act_power, ts } =
+        aggregateData(response.data)
 
-    const reading = new Reading({
-      source: source,
-      timestamp: ts * 1000,
-      total_act_energy,
-      total_act_ret_energy,
-      max_act_power,
-    })
+      const reading = new Reading({
+        source: source,
+        timestamp: ts * 1000,
+        total_act_energy,
+        total_act_ret_energy,
+        max_act_power,
+      })
 
-    dailyData.push(reading)
+      dailyData.push(reading)
+      return
 
-    /*
-    logger.info(
-      `meter data from ${source} at ${ts}: total energy: ${total_act_energy}, maximum power: ${max_act_power}, total returned energy: ${total_act_ret_energy}`,
-    )
-    logger.info(dailyData)
-    */
-  } catch (error) {
-    logger.error('error in request:', error)
+    } catch (error) {
+      const final_attempt = attempt === retries
+      logger.error(`Attempt ${attempt} failed:`, error)
+
+      if (final_attempt) {
+        logger.error('All retries failed for ', url)
+        break
+      }
+    }
   }
 }
 
