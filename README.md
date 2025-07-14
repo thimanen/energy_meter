@@ -6,6 +6,9 @@ The goal of the project is two-fold: first to implement a node.js/express server
 
 The second objective is to create a mobile application with React Native and EXPO framework to request and present hourly/daily/weekly/monthly/yearly energy flows. The aim is to provide graphical visualization both to current power and historical energy flows. Since the energy meter system will operate inside a local network which is not exposed externally (no public IP address), the mobile application will use the free hosted MongoDB database directly to fetch historical data. Presentation of current data is only possible within local network.
 
+The energy_meter application IP is exposed and related port opened, henece the mobile application does not use the MongoDB directly, but all requests are served by the RaspberryPI server.
+
+
 ```mermaid
 architecture-beta
   group energy_meter_system(internet)[Energy meterin system]
