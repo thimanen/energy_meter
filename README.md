@@ -11,7 +11,7 @@ The energy_meter application IP is exposed and related port opened, henece the m
 
 ```mermaid
 architecture-beta
-  group energy_meter_system(internet)[Energy meterin system]
+  group energy_meter_system(internet)[Energy metering system]
     service shelly_mains(server)[Shelly mains] in energy_meter_system
     service shelly_solar(server)[Shelly solar] in energy_meter_system
     service raspberry(server)[Raspberry] in energy_meter_system
@@ -24,7 +24,7 @@ architecture-beta
     junctionShelly:B --> T:raspberry
     database:L <--> R:raspberry
     raspberry:B --> T:application
-    application:R <-- B:database
+    
 
 
 ```
