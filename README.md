@@ -59,3 +59,4 @@ Cover of the fuse cabinet after succesfull installation.
 ||3|68|Implemented the 5 Instantaneous energy flow in plat image (i.e. GET instantaneous energy - last minute) GET /energy/now | TODO: 1 GET weekly route (i.e. month view), 2 GET monthly route (i.e. year view). 4 Aggregated energy generation in plant image (i.e. GET solar energy generation for all-time and daily). 7 Authentication |
 |14.7.|1|69|Implemented a re-try logic to fetchData to try a few times if fetch failed||
 |3.8.|3|72|Implemented route for getting energy data for the whole month (energy/month/:startDate)||
+|5.8.|3|75|Implemented route for getting energy data for the whole year (/energy/year/:startDate)||

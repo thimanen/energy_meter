@@ -7,10 +7,12 @@ const {
   getUtcDayRangeForLocalDate,
   getUtcWeekRangeForLocalDate,
   getUtcMonthRangeForLocalDate,
+  getUtcYearRangeForLocalDate,
 } = require('../helpers/dateUtils')
 const {
   readAggregateByHour,
   readAggregateByDay,
+  readAggregateByMonth,
 } = require('../controllers/readAggregate')
 
 energyRouter.get('/', async (request, response) => {
@@ -78,5 +80,19 @@ energyRouter.get('/month/:date', async (request, response) => {
     response.status(500).json({ error: 'Aggregation failed' })
   }
 })
+
+// GET /energy/year/:date
+energyRouter.get('/year/:date', async (request, response) => {
+  const dateStr = request.params.date
+  const { startUtc, endUtc } = getUtcYearRangeForLocalDate(dateStr)
+
+  try {
+    const energyReadings = await readAggregateByMonth(startUtc, endUtc)
+    response.json(energyReadings)
+  } catch (error) {
+    response.status(500).json({ error: 'Aggregation failed' })
+  }
+})
+
 
 module.exports = energyRouter

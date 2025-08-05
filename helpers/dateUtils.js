@@ -40,9 +40,21 @@ const getUtcMonthRangeForLocalDate = (localDateStr) => {
   return { startUtc, endUtc }
 }
 
+const getUtcYearRangeForLocalDate = (localDateStr) => {
+  const zone = 'Europe/Helsinki'
+  const startLocal = DateTime.fromISO(localDateStr, { zone }).startOf('day')
+  const endLocal = startLocal.plus({ years: 1 }).startOf('day')
+
+  const startUtc = startLocal.toUTC().toJSDate()
+  const endUtc = endLocal.toUTC().toJSDate()
+
+  return { startUtc, endUtc }
+}
+
 module.exports = {
   getTimeUntilNextMinute,
   getUtcDayRangeForLocalDate,
   getUtcWeekRangeForLocalDate,
   getUtcMonthRangeForLocalDate,
+  getUtcYearRangeForLocalDate,
 }
