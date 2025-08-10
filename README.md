@@ -60,3 +60,4 @@ Cover of the fuse cabinet after succesfull installation.
 |14.7.|1|69|Implemented a re-try logic to fetchData to try a few times if fetch failed||
 |3.8.|3|72|Implemented route for getting energy data for the whole month (energy/month/:startDate)||
 |5.8.|3|75|Implemented route for getting energy data for the whole year (/energy/year/:startDate)||
+|10.8.|4|79|A new route for reading the aggragated values for all-time and for given range (for instance current month). Learned to use the MongoDB $facet operator to utilise parallel procesing for same input. The purpose of the /energy/stat/:date route is to provide statistics for the visualizer...||

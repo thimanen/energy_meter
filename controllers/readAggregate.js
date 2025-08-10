@@ -146,4 +146,70 @@ const readAggregateByMonth = async (startTs, endTs) => {
     return []
   }
 }
-module.exports = { readAggregateByHour, readAggregateByDay, readAggregateByMonth }
+
+const readTotalsBySource = async (startTs, endTs) => {
+  try {
+    const results = await Reading.aggregate([
+      {
+        $facet: {
+          // 1) first pipeline for total accumulation of energy values i.e. all in MongoDB
+          allTime: [
+            {
+              $group: {
+                _id: '$source',
+                total_act_energy: { $sum: '$total_act_energy' },
+                total_act_ret_energy: { $sum: '$total_act_ret_energy' },
+                max_act_power: { $max: '$max_act_power' },
+                count: { $sum: 1 },
+              },
+            },
+            {
+              $project: {
+                _id: 0,
+                source: '$_id',
+                total_act_energy: 1,
+                total_act_ret_energy: 1,
+                max_act_power: 1,
+                count: 1,
+              },
+            },
+          ],
+          // 2) second pipeline for total accumulation within the given range (e.g. month)
+          inGivenRange: [
+            {
+              $match: {
+                timestamp: { $gte: startTs, $lt: endTs },
+              },
+            },
+            {
+              $group: {
+                _id: '$source',
+                total_act_energy: { $sum: '$total_act_energy' },
+                total_act_ret_energy: { $sum: '$total_act_ret_energy' },
+                max_act_power: { $max: '$max_act_power' },
+                count: { $sum: 1 },
+              },
+            },
+            {
+              $project: {
+                _id: 0,
+                source: '$_id',
+                total_act_energy: 1,
+                total_act_ret_energy: 1,
+                max_act_power: 1,
+                count: 1,
+              },
+            },
+          ],
+        },
+      },
+    ]);
+
+    return results[0]; 
+  } catch (error) {
+    logger.error('Aggregation error:', error.message);
+    return { allTime: [], inGivenRange: [] };
+  }
+};
+
+module.exports = { readAggregateByHour, readAggregateByDay, readAggregateByMonth, readTotalsBySource }
